@@ -1,0 +1,64 @@
+directory name: /home/fujiyama/PredictiveCoding/eval/quantitative_eval/MSE
+contents: Codes for quantitative evaluation with metric of MSE
+
+~~~~~~~~~~~~~~~~~~~~~~~~~
+MSE.py
+MSE_Lv1_seq.py
+MSE_Lv2_seq.py
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+% MSE.py
+	This program calculates the average of MSE between 2 frames in a row.
+	(scale: RGB value / 255)
+	
+	Usage:
+		python MSE.py <arg0> <arg1> <arg2> …
+	Arguments:
+		-d <image list>
+		-b <beginning id> (0 <= b < #row(image list))
+		-e <end id> (b < e <= #row(image list))
+     		-r <root directory>
+     		-c <# channels> (RGB => 3, gray scale => 1 )
+     		-s <size of each image> (width,height (pixels))
+
+
+% MSE_Lv1_seq.py
+	This program is for comparison between (input, correct) and
+	(predict, correct) in a specific sequence.
+	If (input, correct) > (predict, correct), then the learned model
+	can generate better predictive frames rather than reconstructing
+	the last input frames.
+
+	This calculates and outputs the average of MSE at (input, correct)
+	and (predict, correct). (scale: RGB value / 255)
+	
+	Usage:
+		python MSE_Lv1_seq.py <arg0> <arg1> <arg2> ...
+	Arguments:
+     		-d <sequence name>
+     		-r <sequence range>
+     		-p <image directory path>
+     		-c <# channels> (RGB => 3, gray scale => 1 )
+     		-s <size of each image> (width,height (pixels))
+
+% MSE_Lv2_seq.py
+	This program is for comparison between (input, predict) and
+	(predict, correct) in a specific sequence.
+	If (input, predict) > (predict, correct), then the learned model
+	can generate predictive frames which are closer to the correct frames
+	than to the last input frames.
+	
+	This calculates and outputs the average of MSE at (input, predict)
+	and (predict, correct). (scale: RGB value / 255)
+	
+	Usage:
+     		python MSE_Lv2_seq.py <arg0> <arg1> <arg2> ...
+	Arguments:
+     		-d <sequence name>
+     		-r <sequence range>
+     		-p <image directory path>
+     		-c <# channels> (RGB => 3, gray scale => 1 )
+     		-s <size of each image> (width,height (pixels))
+
+
+
